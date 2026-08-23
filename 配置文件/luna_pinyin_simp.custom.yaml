@@ -11,12 +11,12 @@ patch:
     - name: zh_simp # (※1) 繁简转换
       reset: 1
       states: [ "漢字", "汉字" ]
-    - options: [ "utf8", "gbk", "gb2312" ] # (※2)字符集选单
-      reset: 0 # 默认 UTF8
-      states:
-        - UTF-8
-        - GBK
-        - GB2312
+    # - options: [ "utf8", "gbk", "gb2312" ] # (※2)字符集选单
+    #   reset: 0 # 默认 UTF8
+    #   states:
+    #     - UTF-8
+    #     - GBK
+    #     - GB2312
 
   simplifier:
     option_name: zh_simp
@@ -26,7 +26,9 @@ patch:
     - simplifier
     - simplifier@emoji_conversion
     - uniquifier
-    - charset_filter@gbk # (※3) GBK 过滤
+    #- charset_filter@gbk # 过滤扩展 CJK 生僻字（该写法已经不对了， 不能带参数）
+    #- extended_charset_filter@gbk # (※3) GBK 过滤（需 librime-charcode，Squirrel 不自带，需要安装）
+    #- charset_filter # 过滤扩展 CJK 生僻字（该写法已经不对了， rime当前实现导致这么写一定会报错）
     - single_char_filter
 
   emoji_conversion:
